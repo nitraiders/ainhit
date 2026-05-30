@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社AINHIT | 国際基準の高度衛生リネンサプライ・テキスタイル管理</title>
+    <meta name="description" content="株式会社AINHIT（アインハイト）は、国際基準（RCP基準）に準拠した高度衛生洗浄プロセスと、JIT（ジャストインタイム）自社配送網、RFID在庫管理を融合させた高品質リネンサプライのリーディングカンパニーです。ホテル・医療機関・企業のテキスタイル環境をトータルサポート。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#005bac">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef7ff',
+                            100: '#d9eeff',
+                            200: '#bce0ff',
+                            300: '#8ecbff',
+                            400: '#59adff',
+                            500: '#318fff',
+                            600: '#176fff',
+                            700: '#005bac',
+                            800: '#0a4c8f',
+                            900: '#0f4175',
+                        },
+                        navy: {
+                            900: '#0a192f',
+                            950: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'Inter', 'sans-serif'],
+                        heading: ['Outfit', 'Noto Sans JP', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 25px 50px -12px rgba(0, 91, 172, 0.15)',
+                        'premium-hover': '0 30px 60px -10px rgba(0, 91, 172, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        .header-transparent {
+            background: rgba(10, 25, 47, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .header-solid {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #1e293b;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(10, 25, 47, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+        }
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(0, 91, 172, 0.2), 0 0 0 6px rgba(0, 91, 172, 0.15), 0 0 0 15px rgba(0, 91, 172, 0.08); }
+            100% { box-shadow: 0 0 0 6px rgba(0, 91, 172, 0.15), 0 0 0 15px rgba(0, 91, 172, 0.08), 0 0 0 35px rgba(0, 91, 172, 0); }
+        }
+        .pulse-btn:hover {
+            animation: ripple 1.5s infinite;
+        }
+        .hairline-grid {
+            background-image: linear-gradient(rgba(226, 232, 240, 0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(226, 232, 240, 0.04) 1px, transparent 1px);
+            background-size: 8px 8px;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-200 bg-navy-900 selection:bg-primary-900 selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 header-transparent">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center transition-all duration-300">
+            <a href="#" class="flex items-center gap-4 group">
+                <div class="relative">
+                    <!-- Clean standalone transparent logo. Removed slate dark box container for premium design -->
+                    <img src="assets/logo.png" alt="AINHIT Logo" class="h-12 w-12 object-contain group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-lg font-bold tracking-tight text-white leading-tight">株式会社AINHIT</span>
+                    <span class="text-[9px] text-slate-400 font-extrabold tracking-[0.25em] uppercase font-heading">AINHIT Linen Supply</span>
+                </div>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="lg:hidden p-2.5 text-slate-300 hover:bg-slate-800 rounded-xl transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#about" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">強み・提供価値</a>
+                <a href="#services" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">事業領域</a>
+                <a href="#company" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">会社情報</a>
+                <a href="contact.html" class="pulse-btn px-6 py-3 bg-gradient-to-r from-primary-700 to-primary-800 text-white text-sm font-bold rounded-full hover:from-primary-800 hover:to-primary-900 shadow-md shadow-primary-900/50 transition-all hover:scale-[1.03]">
+                    お問い合わせ
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Mobile Nav Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-950 border-t border-slate-800 p-6 shadow-2xl rounded-b-[2rem]">
+            <nav class="flex flex-col gap-4">
+                <a href="#about" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">強み・提供価値</a>
+                <a href="#services" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">事業領域</a>
+                <a href="#company" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">会社情報</a>
+                <a href="contact.html" class="mt-4 text-center py-4 bg-gradient-to-r from-primary-700 to-primary-800 text-white font-bold rounded-2xl shadow-lg">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Premium Hero Section -->
+        <section class="relative min-h-[95vh] flex items-center pt-24 overflow-hidden bg-navy-900">
+            <!-- Background Image with deep linear overlay -->
+            <div class="absolute inset-0 z-0 opacity-20">
+                <img src="assets/einheit-hero-main.png" alt="Hero background" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute inset-0 hero-gradient z-0"></div>
+            
+            <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 text-white" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-700/20 border border-primary-500/30 rounded-full mb-6">
+                        <span class="w-2 h-2 bg-primary-400 rounded-full animate-ping"></span>
+                        <span class="text-xs font-bold tracking-widest text-primary-300 uppercase font-heading">Premium Business Service</span>
+                    </div>
+                    
+                    <h1 class="font-heading text-4xl md:text-6xl font-bold leading-[1.15] mb-8">
+                        テキスタイルの美しさと、<br>
+                        <span class="text-primary-400">確かな衛生管理を。</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                        株式会社AINHITは、独自の高度洗浄プロセス（RCP基準準拠）と自社配送ネットワーク（JITシステム）で、宿泊施設・医療機関のファーストクラスなテキスタイル環境を創り出します。
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#services" class="px-8 py-4 bg-primary-700 text-white font-bold rounded-full text-center hover:bg-primary-600 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary-950/40">
+                            事業内容を見る
+                        </a>
+                        <a href="contact.html" class="px-8 py-4 bg-transparent border-2 border-white/20 text-white font-bold rounded-full text-center hover:bg-white/10 hover:border-white/40 hover:scale-[1.02] active:scale-[0.98] transition-all backdrop-blur-sm">
+                            お問い合わせ
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Modern Image Composition -->
+                <div class="lg:col-span-5 relative hidden lg:block" data-aos="fade-left" data-aos-duration="1200">
+                    <div class="relative w-full h-[500px] flex items-center justify-center">
+                        <!-- Graphic Circle Accent -->
+                        <div class="absolute w-72 h-72 bg-primary-600/10 rounded-full blur-[100px] top-10 left-10"></div>
+                        
+                        <!-- Main Image Frame -->
+                        <div class="absolute top-8 right-6 w-[75%] h-[65%] rounded-[2rem] overflow-hidden border-4 border-slate-700 shadow-[0_20px_50px_rgba(0,91,172,0.3)] z-10 backdrop-blur-md">
+                            <img src="assets/einheit-hero-main.png" alt="High precision linen factory" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Sub Image Frame -->
+                        <div class="absolute bottom-8 left-6 w-[60%] h-[50%] rounded-[2rem] overflow-hidden border-4 border-slate-800 shadow-[0_20px_50px_rgba(0,91,172,0.3)] z-20">
+                            <img src="assets/einheit-hero-sub.png" alt="Clean guestroom bedmaking" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <!-- Float Quality Tag -->
+                        <div class="absolute bottom-20 right-10 bg-navy-950/95 backdrop-blur-md py-4 px-6 rounded-2xl shadow-xl border border-slate-800 z-30 flex items-center gap-3">
+                            <div class="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></div>
+                            <span class="text-xs font-bold text-slate-200 tracking-wider">Quality Operations Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wave Shape Divider -->
+            <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-navy-950 to-transparent opacity-60"></div>
+        </section>
+
+        <!-- Strengths / Core Values Section -->
+        <section id="about" class="py-32 bg-navy-950 relative">
+            <div class="container mx-auto px-6">
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto mb-28" data-aos="fade-up">
+                    <span class="text-primary-400 font-bold tracking-widest uppercase text-sm mb-4 block">OUR CORE VALUES</span>
+                    <h2 class="font-heading text-3xl md:text-5xl font-bold text-white mb-6">
+                        AINHITの3つの価値基準
+                    </h2>
+                    <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                        高精度なテクノロジーと一貫した物流設計により、ビジネスのオペレーションコストを最小化し、衛生管理を最大化する当社の「提供価値」です。
+                    </p>
+                    <div class="h-1.5 w-24 bg-primary-700 mx-auto rounded-full mt-6"></div>
+                </div>
+ 
+                <div class="space-y-36">
+                    <!-- Value 01: Image Left, Text Right -->
+                    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                        <!-- Visual Panel -->
+                        <div class="w-full lg:w-1/2 order-1 lg:order-1" data-aos="fade-right">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-navy-900 p-4 group">
+                                <div class="rounded-xl overflow-hidden h-[380px]">
+                                    <img src="assets/einheit-hero-main.png" alt="RCP Highly Hygienic Washing Process" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent m-4 rounded-xl pointer-events-none"></div>
+                                <div class="absolute bottom-10 left-10 text-white z-10">
+                                    <span class="text-xs font-bold tracking-widest text-primary-300 uppercase">Hygiene & Safety</span>
+                                    <h4 class="text-2xl font-bold mt-2">高度衛生滅菌工場ライン</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Description Panel -->
+                        <div class="w-full lg:w-1/2 order-2 lg:order-2" data-aos="fade-left">
+                            <span class="text-primary-400 font-bold font-heading text-2xl tracking-wider block">01 / RCP PROCESS</span>
+                            <h3 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6 leading-tight">RCP（国際基準）に準拠した<br>高度衛生洗浄プロセス</h3>
+                            <p class="text-slate-300 leading-relaxed mb-6">
+                                医療や高級宿泊施設の要求に適合した「RCP（汚染制御基準）」を自社基準として設定。高温殺菌トンネルウォッシャーと高精度バッチ式洗濯システムの完全連動により、繊維の奥深くに潜む微細な汚れや病原体を徹底的に除去します。
+                            </p>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-start gap-3.5">
+                                    <span class="w-6 h-6 bg-primary-950/60 border border-primary-500/30 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <span><strong>高温熱水除菌（80℃以上・10分以上）:</strong> 各種ウイルス、芽胞菌、アレルゲンを徹底的に除去する熱化学処理を実行。</span>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <span class="w-6 h-6 bg-primary-950/60 border border-primary-500/30 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <span><strong>陽圧制御クリーンルーム包装:</strong> 洗浄乾燥後のリネンは、チリ一つ存在しない陽圧空間で個包装され、納品直前まで高い衛生品質を維持。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Value 02: Text Left, Image Right -->
+                    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                        <!-- Description Panel -->
+                        <div class="w-full lg:w-1/2 order-2 lg:order-1" data-aos="fade-right">
+                            <span class="text-primary-400 font-bold font-heading text-2xl tracking-wider block">02 / JIT LOGISTICS</span>
+                            <h3 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6 leading-tight">ジャストインタイム（JIT）<br>自社配送集配システム</h3>
+                            <p class="text-slate-300 leading-relaxed mb-6">
+                                外部委託業者を一切使わず、厳しい衛生配送管理研修を受けた当社の「完全自社専属ドライバー」が定期巡回。納品ミスや回収の遅延を防ぎ、常に現場が必要とする必要量のリネンをジャストインタイムで補充します。
+                            </p>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-start gap-3.5">
+                                    <span class="w-6 h-6 bg-primary-950/60 border border-primary-500/30 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <span><strong>欠品ゼロを実現する物流計画:</strong> 宿泊施設や医療現場のリアルタイム稼働データを踏まえ、適切な安全在庫を確保しながら集配を行います。</span>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <span class="w-6 h-6 bg-primary-950/60 border border-primary-500/30 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <span><strong>24時間体制の緊急ピストン車:</strong> 急激な利用率増加や災害等の非常事態時にも、24時間稼働のバックアップ体制で即座に急行・対応。</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Visual Panel -->
+                        <div class="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-navy-900 p-4 group">
+                                <div class="rounded-xl overflow-hidden h-[380px]">
+                                    <img src="assets/einheit-hero-sub.png" alt="JIT Logistics Network" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent m-4 rounded-xl pointer-events-none"></div>
+                                <div class="absolute bottom-10 left-10 text-white z-10">
+                                    <span class="text-xs font-bold tracking-widest text-primary-300 uppercase">Logistics & Supply</span>
+                                    <h4 class="text-2xl font-bold mt-2">完全自社定期ルート集配網</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Value 03: Image Left, Text Right -->
+                    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+                        <!-- Visual Panel -->
+                        <div class="w-full lg:w-1/2 order-1 lg:order-1" data-aos="fade-right">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-800 bg-navy-900 p-4 group">
+                                <div class="rounded-xl overflow-hidden h-[380px]">
+                                    <img src="assets/einheit-hero-main.png" alt="RFID Technology Inventory Tracking" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 to-transparent m-4 rounded-xl pointer-events-none"></div>
+                                <div class="absolute bottom-10 left-10 text-white z-10">
+                                    <span class="text-xs font-bold tracking-widest text-primary-300 uppercase">IoT Technology</span>
+                                    <h4 class="text-2xl font-bold mt-2">UHF帯RFIDトレーサビリティ</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Description Panel -->
+                        <div class="w-full lg:w-1/2 order-2 lg:order-2" data-aos="fade-left">
+                            <span class="text-primary-400 font-bold font-heading text-2xl tracking-wider block">03 / RFID MANAGEMENT</span>
+                            <h3 class="text-3xl md:text-4xl font-bold text-white mt-3 mb-6 leading-tight">アセットマネジメント<br>（在庫管理・コスト最適化）</h3>
+                            <p class="text-slate-300 leading-relaxed mb-6">
+                                当社が提供する各繊維アセットに極小の超高周波（UHF帯）RFIDチップを内蔵（オプション対応）。一括スキャン検品とデータベース連携により、正確なトレイサビリティと棚卸支援を可能にし、アセット管理コストを劇的に削減します。
+                            </p>
+                            <ul class="space-y-4 text-slate-300">
+                                <li class="flex items-start gap-3.5">
+                                    <span class="w-6 h-6 bg-primary-950/60 border border-primary-500/30 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <span><strong>ライフサイクル管理:</strong> 各製品の洗濯回数や劣化度合いを数値化し、破れや汚れの発生する前に計画的な交換対応を行います。</span>
+                                </li>
+                                <li class="flex items-start gap-3.5">
+                                    <span class="w-6 h-6 bg-primary-950/60 border border-primary-500/30 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
+                                    <span><strong>総保有コスト（TCO）の削減:</strong> リアルタイム在庫状況を可視化することで余剰な備蓄在庫を削減し、棚卸工数を95%以上圧縮。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-32 bg-navy-900 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row items-end justify-between mb-24 gap-8" data-aos="fade-up">
+                    <div class="max-w-2xl">
+                        <span class="text-primary-400 font-bold tracking-widest uppercase text-sm mb-4 block">SERVICE SECTORS</span>
+                        <h2 class="font-heading text-3xl md:text-5xl font-bold text-white mb-0 leading-tight">
+                            あらゆる業界の美感と衛生を<br>支える特化型サプライ
+                        </h2>
+                    </div>
+                    <p class="text-slate-400 max-w-sm mb-2 text-sm leading-relaxed">
+                        極上のホスピタリティが求められるホテル、最高レベルの滅菌洗浄が必要とされる病院、美観とブランド維持が重要なオフィスや店舗など、各業界に最適化されたサービスを設計。
+                    </p>
+                </div>
+
+                <!-- Grid Layout (3 Columns) -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Sector 01: Hotel Linen -->
+                    <div class="service-card group bg-gradient-to-br from-navy-950 to-navy-900 rounded-2xl p-10 shadow-premium hover:shadow-premium-hover border border-slate-800 hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between min-h-[500px]" data-aos="fade-up" data-aos-delay="100">
+                        <div>
+                            <div class="service-icon w-16 h-16 bg-slate-900/60 text-primary-400 border border-slate-800 rounded-xl flex items-center justify-center mb-8 group-hover:bg-primary-700 group-hover:text-white transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-4 leading-tight">プレミアム・ホテル<br>リネンサプライ</h4>
+                            <p class="text-slate-350 text-sm leading-relaxed mb-8">
+                                外資系ホテル、国内老舗高級旅館、大型ビジネスホテル等、多様な宿泊形態に対応。最高峰の清潔感と心地よい肌触りを追求したリネンを一元管理します。
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-[11px] font-bold tracking-wider uppercase mb-3">対応アイテム例</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">デュベカバー</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">特紡シーツ</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">40番手ピローケース</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">1200匁バスタオル</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sector 02: Medical & Care -->
+                    <div class="service-card group bg-gradient-to-br from-navy-950 to-navy-900 rounded-2xl p-10 shadow-premium hover:shadow-premium-hover border border-slate-800 hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between min-h-[500px]" data-aos="fade-up" data-aos-delay="200">
+                        <div>
+                            <div class="service-icon w-16 h-16 bg-slate-900/60 text-primary-400 border border-slate-800 rounded-xl flex items-center justify-center mb-8 group-hover:bg-primary-700 group-hover:text-white transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-4 leading-tight">メディカル＆ケア・<br>リネンサプライ</h4>
+                            <p class="text-slate-350 text-sm leading-relaxed mb-8">
+                                総合病院、特定クリニック、高級有料老人施設向けに特化。院内感染リスクをシャットアウトする高度滅菌・除菌洗浄システムをベースに寝具類をリースします。
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-[11px] font-bold tracking-wider uppercase mb-3">対応アイテム例</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">滅菌シーツ</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">リハビリ患者衣</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">ドクター用スクラブ</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">防汚マットレスカバー</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sector 03: Corporate Uniform -->
+                    <div class="service-card group bg-gradient-to-br from-navy-950 to-navy-900 rounded-2xl p-10 shadow-premium hover:shadow-premium-hover border border-slate-800 hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between min-h-[500px]" data-aos="fade-up" data-aos-delay="300">
+                        <div>
+                            <div class="service-icon w-16 h-16 bg-slate-900/60 text-primary-400 border border-slate-800 rounded-xl flex items-center justify-center mb-8 group-hover:bg-primary-700 group-hover:text-white transition-all duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-4 leading-tight">コーポレート・<br>ユニフォームマネジメント</h4>
+                            <p class="text-slate-350 text-sm leading-relaxed mb-8">
+                                高級レストラン、食品加工工場、大規模商業施設などのユニフォームや業務用テキスタイルのクリーニング及びアセット管理を行い、ブランド維持に直結します。
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-slate-400 text-[11px] font-bold tracking-wider uppercase mb-3">対応アイテム例</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">コックコート</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">帯電防止作業服</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">サロンエプロン</span>
+                                <span class="inline-block px-3 py-1 bg-navy-900 text-slate-300 text-[10px] font-bold rounded-full border border-primary-500/30 bg-primary-950/40 text-primary-300">テーブルクロス</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company & Governance Section -->
+        <section id="company" class="py-32 bg-navy-950">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Section Header -->
+                    <div class="mb-20 text-center" data-aos="fade-up">
+                        <span class="text-primary-400 font-bold tracking-widest uppercase text-sm mb-4 block">COMPANY SPECIFICATION</span>
+                        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">企業情報・メッセージ</h2>
+                        <div class="h-1 w-16 bg-primary-700 mx-auto rounded-full mt-4"></div>
+                    </div>
+                    
+                    <!-- President Message Container -->
+                    <div class="bg-gradient-to-br from-navy-900 to-navy-950 border border-slate-800 rounded-3xl p-8 md:p-12 mb-12 shadow-sm" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="w-full md:w-3/4">
+                                <span class="text-xs font-bold text-primary-400 uppercase tracking-widest block mb-3">Top Message</span>
+                                <h3 class="text-xl md:text-2xl font-bold text-white mb-6 leading-snug">
+                                    清潔と調和をもって社会へ貢献し、<br class="hidden sm:block">持続可能な高衛生ビジネス環境を支え続ける。
+                                </h3>
+                                <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+                                    私たち株式会社AINHITは、リネンサプライを単なる「洗濯物の回収・納品」とは捉えておりません。それは、ホテルのお客様が眠りにつく瞬間の「究極の安らぎ」であり、医療現場のプロフェッショナルが患者様に対峙する際の「確固たる安心」そのものです。<br><br>
+                                    国際規格に適合した高度な衛生洗浄技術と、1秒の遅れも許さない自社配送のジャストインタイム物流網、さらにRFID等のテクノロジーによる在庫管理の可視化を三位一体で展開し、お客様のファーストクラスな環境創造をお約束します。
+                                </p>
+                                <div class="text-right">
+                                    <p class="text-slate-400 text-[11px] font-bold">株式会社AINHIT</p>
+                                    <p class="text-white text-lg font-bold mt-1.5 flex items-center justify-end gap-2">
+                                        代表取締役社長 <span class="font-heading font-normal border-b-2 border-primary-700 pb-0.5 px-1">山﨑 祐之</span>
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Official Corporate Identity Card - No Dummy "Official Brand" Text - Hairline grid background -->
+                            <div class="w-full md:w-1/4 shrink-0 flex items-center justify-center h-full pt-4 md:pt-0">
+                                <div class="relative w-36 h-36 bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl shadow-2xl flex flex-col items-center justify-center border border-slate-700/80 overflow-hidden group p-4 hairline-grid">
+                                    <!-- Embedded clean logo inside premium grid hairline container -->
+                                    <img src="assets/logo.png" alt="AINHIT Emblem" class="w-24 h-24 object-contain group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Modern High-Contrast Table -->
+                    <div class="overflow-hidden rounded-3xl border border-slate-800 shadow-2xl shadow-black/40" data-aos="fade-up" data-aos-delay="100">
+                        <table class="w-full text-left border-collapse">
+                            <tbody>
+                                <tr class="border-b border-slate-800">
+                                    <th class="py-6 px-8 bg-slate-900/60 text-slate-300 font-bold w-1/3 text-xs md:text-sm tracking-wider">会社名</th>
+                                    <td class="py-6 px-8 text-white font-bold text-sm md:text-base">株式会社AINHIT (AINHIT Corporation)</td>
+                                </tr>
+                                <tr class="border-b border-slate-800">
+                                    <th class="py-6 px-8 bg-slate-900/60 text-slate-300 font-bold text-xs md:text-sm tracking-wider">役員</th>
+                                    <td class="py-6 px-8 text-white text-sm md:text-base font-medium">
+                                        代表取締役社長　山﨑 祐之
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-slate-800">
+                                    <th class="py-6 px-8 bg-slate-900/60 text-slate-300 font-bold text-xs md:text-sm tracking-wider">所在地</th>
+                                    <td class="py-6 px-8 text-white text-sm md:text-base font-medium leading-relaxed">
+                                        〒335-0021 埼玉県戸田市新曽２４６３－１０ チェリーブラッサム２０３
+                                    </td>
+                                </tr>
+                                <tr class="border-b border-slate-800">
+                                    <th class="py-6 px-8 bg-slate-900/60 text-slate-300 font-bold text-xs md:text-sm tracking-wider">連絡先</th>
+                                    <td class="py-6 px-8 text-white text-sm md:text-base font-medium leading-relaxed font-sans">
+                                        TEL: 048-287-3645<br>
+                                        FAX: 048-287-3646<br>
+                                        E-mail: y_yamazaki@ainhit.co.jp
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="py-6 px-8 bg-slate-900/60 text-slate-300 font-bold text-xs md:text-sm tracking-wider">決算期</th>
+                                    <td class="py-6 px-8 text-white text-sm md:text-base font-medium">3月末日</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA / Contact Section -->
+        <section id="contact" class="py-28 bg-[#0a192f] relative overflow-hidden border-t border-slate-800">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 right-0 w-[450px] h-[450px] bg-primary-900/20 rounded-full blur-[120px] -mr-48 -mt-48 opacity-40"></div>
+            <div class="absolute bottom-0 left-0 w-[450px] h-[450px] bg-primary-800/10 rounded-full blur-[120px] -ml-48 -mb-48 opacity-30"></div>
+            
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
+                    <span class="text-primary-400 font-bold tracking-widest uppercase text-xs mb-4 block">GET IN TOUCH</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-8 leading-snug">
+                        清潔で、心地よい。 <br>
+                        その一歩を、共に創る。
+                    </h2>
+                    <p class="text-slate-300 text-sm md:text-base mb-12 max-w-2xl mx-auto leading-relaxed">
+                        国際品質のリネンサプライからアセット最適化ソリューションまで、お客様のニーズに合わせたベストプランをご提案いたします。まずはお気軽にご相談ください。
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                        <a href="tel:048-287-3645" class="flex flex-col items-center p-8 bg-navy-950/60 backdrop-blur border border-slate-800 rounded-2xl hover:bg-primary-850 hover:text-white transition-all duration-300 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-primary-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            <span class="text-[10px] uppercase tracking-wider font-extrabold mb-1 opacity-70">Phone Support</span>
+                            <span class="text-2xl font-bold font-heading">048-287-3645</span>
+                        </a>
+                        <a href="contact.html" class="flex flex-col items-center p-8 bg-gradient-to-r from-primary-700 to-primary-800 border border-primary-650 rounded-2xl hover:from-primary-600 hover:to-primary-700 text-white transition-all duration-300 group shadow-2xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mb-4 text-white group-hover:scale-105 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span class="text-[10px] uppercase tracking-wider font-extrabold mb-1 opacity-70">Form Support</span>
+                            <span class="text-lg font-bold">お問い合わせフォーム</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer - Removed slate dark container around logo -->
+    <footer class="bg-navy-950 py-14 border-t border-slate-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.png" alt="AINHIT Logo" class="h-10 w-10 object-contain">
+                <span class="font-heading text-lg font-bold text-white">株式会社AINHIT</span>
+            </div>
+            
+            <nav class="flex gap-8 text-sm font-bold text-slate-400">
+                <a href="#about" class="hover:text-primary-400 transition-colors">強み・提供価値</a>
+                <a href="#services" class="hover:text-primary-400 transition-colors">事業領域</a>
+                <a href="#company" class="hover:text-primary-400 transition-colors">会社情報</a>
+            </nav>
+            
+            <p class="text-slate-400 text-sm font-medium">
+                &copy; 2026 Ainhit Corporation. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            duration: 850,
+            offset: 100
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('header-solid');
+                header.classList.remove('header-transparent');
+            } else {
+                header.classList.remove('header-solid');
+                header.classList.add('header-transparent');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | 株式会社AINHIT</title>
+    <meta name="description" content="株式会社AINHIT（アインハイト）へのお問い合わせ窓口です。国際基準（RCP基準）の高度衛生リネンサプライ、各種ユニフォーム管理、RFID在庫管理ソリューションに関するご相談やお見積りのご依頼などを承ります。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#005bac">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef7ff',
+                            100: '#d9eeff',
+                            200: '#bce0ff',
+                            300: '#8ecbff',
+                            400: '#59adff',
+                            500: '#318fff',
+                            600: '#176fff',
+                            700: '#005bac',
+                            800: '#0a4c8f',
+                            900: '#0f4175',
+                        },
+                        navy: {
+                            900: '#0a192f',
+                            950: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'Inter', 'sans-serif'],
+                        heading: ['Outfit', 'Noto Sans JP', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 25px 50px -12px rgba(0, 91, 172, 0.15)',
+                        'premium-hover': '0 30px 60px -10px rgba(0, 91, 172, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        .header-solid {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid #1e293b;
+        }
+        .form-input {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #005bac;
+            box-shadow: inset 0 0 0 1.5px #005bac, 0 0 25px rgba(0, 91, 172, 0.15);
+            background: #ffffff;
+        }
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(0, 91, 172, 0.2), 0 0 0 6px rgba(0, 91, 172, 0.15), 0 0 0 15px rgba(0, 91, 172, 0.08); }
+            100% { box-shadow: 0 0 0 6px rgba(0, 91, 172, 0.15), 0 0 0 15px rgba(0, 91, 172, 0.08), 0 0 0 35px rgba(0, 91, 172, 0); }
+        }
+        .pulse-btn:hover {
+            animation: ripple 1.5s infinite;
+        }
+        .hairline-grid {
+            background-image: linear-gradient(rgba(0, 91, 172, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 91, 172, 0.02) 1px, transparent 1px);
+            background-size: 12px 12px;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-200 bg-navy-900 selection:bg-primary-900 selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 header-solid">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-4 group">
+                <div class="relative">
+                    <!-- Standalone clean transparent logo. Removed dark container box -->
+                    <img src="assets/logo.png" alt="AINHIT Logo" class="h-12 w-12 object-contain group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-heading text-lg font-bold tracking-tight text-white leading-tight">株式会社AINHIT</span>
+                    <span class="text-[9px] text-slate-400 font-extrabold tracking-[0.25em] uppercase font-heading">AINHIT Linen Supply</span>
+                </div>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="lg:hidden p-2.5 text-slate-300 hover:bg-slate-800 rounded-xl transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="index.html#about" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">強み・提供価値</a>
+                <a href="index.html#services" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">事業領域</a>
+                <a href="index.html#company" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">会社情報</a>
+                <a href="contact.html" class="pulse-btn px-6 py-3 bg-gradient-to-r from-primary-700 to-primary-800 text-white text-sm font-bold rounded-full hover:from-primary-800 hover:to-primary-900 shadow-md shadow-primary-900/50 transition-all hover:scale-[1.03]">
+                    お問い合わせ
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-950 border-t border-slate-800 p-6 shadow-2xl rounded-b-[2rem]">
+            <nav class="flex flex-col gap-4">
+                <a href="index.html#about" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">強み・提供価値</a>
+                <a href="index.html#services" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">事業領域</a>
+                <a href="index.html#company" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">会社情報</a>
+                <a href="contact.html" class="mt-4 text-center py-4 bg-gradient-to-r from-primary-700 to-primary-800 text-white font-bold rounded-2xl shadow-lg">お問い合わせ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-36 pb-24 bg-navy-900 min-h-screen relative overflow-hidden">
+        <!-- Decoration background glow -->
+        <div class="absolute top-20 right-0 w-[400px] h-[400px] bg-primary-800/10 rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
+        <div class="absolute bottom-20 left-0 w-[400px] h-[400px] bg-primary-900/15 rounded-full blur-[100px] opacity-25 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="text-primary-400 font-bold tracking-widest uppercase text-xs mb-3 block">CONTACT WINDOW</span>
+                    <h1 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">お問い合わせ</h1>
+                    <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+                        高度衛生リネンサプライのご相談、RFID個別アセット管理のお見積りなど、<br class="hidden md:block">
+                        必要事項をご記入の上、お気軽にお問い合わせください。
+                    </p>
+                </div>
+
+                <!-- Contact Form Container: White-to-Slate light luxury gradient contrasting against dark background -->
+                <div class="bg-gradient-to-b from-white to-slate-50/95 rounded-[2.5rem] shadow-premium hover:shadow-premium-hover transition-shadow duration-500 p-8 md:p-12 border border-slate-200/50 hairline-grid text-slate-900" data-aos="fade-up" data-aos-delay="100">
+                    <form action="#" method="POST" id="contact-form">
+                        <div class="grid gap-8">
+                            <!-- Company Name -->
+                            <div>
+                                <label for="company-name" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">貴社名 <span class="text-slate-400 font-normal">（任意）</span></label>
+                                <input type="text" id="company-name" name="company" placeholder="例：株式会社AINHIT" 
+                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
+                            </div>
+
+                            <!-- Name -->
+                            <div>
+                                <label for="full-name" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">お名前 <span class="text-red-500">*</span></label>
+                                <input type="text" id="full-name" name="name" required placeholder="例：山﨑 祐之" 
+                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">メールアドレス <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="例：y_yamazaki@ainhit.co.jp" 
+                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">電話番号 <span class="text-red-500">*</span></label>
+                                <input type="tel" id="phone" name="phone" required placeholder="例：048-287-3645" 
+                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
+                            </div>
+
+                            <!-- Content -->
+                            <div>
+                                <label for="message" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">お問い合わせ内容 <span class="text-red-500">*</span></label>
+                                <textarea id="message" name="message" required rows="6" placeholder="ご検討中のサービス種別（ホテル用、病院用、ユニフォーム等）、規模、ご要望などを具体的にご記入ください。" 
+                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input resize-none text-sm leading-relaxed"></textarea>
+                            </div>
+
+                            <!-- Premium Submit Button -->
+                            <div class="pt-4">
+                                <button type="submit" class="w-full py-5 bg-gradient-to-r from-primary-700 to-primary-800 text-white font-bold rounded-2xl hover:from-primary-800 hover:to-primary-900 transition-all duration-300 shadow-lg shadow-primary-200 flex items-center justify-center gap-3 group relative overflow-hidden active:scale-[0.98]">
+                                    <span class="relative z-10 transition-transform duration-300 group-hover:translate-x-[-3px]">送信内容を確認する</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative z-10 group-hover:translate-x-2 transition-transform duration-300 ease-out" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    </svg>
+                                    <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none"></div>
+                                </button>
+                                <p class="mt-6 text-center text-xs text-slate-500 leading-relaxed">
+                                    ※現在お問い合わせフォームシステムは調整中のため、送信機能は準備段階となっております。<br>
+                                    お急ぎの方は、お電話（<strong>048-287-3645</strong>）または携帯（<strong>080-7593-5797</strong>）へ直接ご連絡をお願いいたします。
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Policy Clause -->
+                <p class="mt-12 text-center text-[11px] text-slate-400 leading-relaxed">
+                    ご入力いただいた個人情報および企業情報は、お問い合わせへの回答ならびに最適なサービスご提案の目的にのみ安全に利用いたします。第三者への開示・提供は一切行いません。
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 py-14 border-t border-slate-900">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-3">
+                <!-- Standalone clean transparent logo. Removed dark box container -->
+                <img src="assets/logo.png" alt="AINHIT Logo" class="h-10 w-10 object-contain">
+                <span class="font-heading text-lg font-bold text-white">株式会社AINHIT</span>
+            </div>
+            
+            <nav class="flex gap-8 text-sm font-bold text-slate-400">
+                <a href="index.html#about" class="hover:text-primary-400 transition-colors">強み・提供価値</a>
+                <a href="index.html#services" class="hover:text-primary-400 transition-colors">事業領域</a>
+                <a href="index.html#company" class="hover:text-primary-400 transition-colors">会社情報</a>
+            </nav>
+            
+            <p class="text-slate-400 text-sm font-medium">
+                &copy; 2026 Ainhit Corporation. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            duration: 850,
+            offset: 100
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form Submission (Dummy Override)
+        const form = document.getElementById('contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('お問い合わせフォームはシステム調整中のため、お電話（048-287-3645）または携帯（080-7593-5797）にて代表：山﨑まで直接お問い合わせください。');
+        });
+    </script>
+</body>
+</html>
