@@ -1,272 +1,341 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>お問い合わせ | 株式会社AINHIT</title>
-    <meta name="description" content="株式会社AINHIT（アインハイト）へのお問い合わせ窓口です。国際基準（RCP基準）の高度衛生リネンサプライ、各種ユニフォーム管理、RFID在庫管理ソリューションに関するご相談やお見積りのご依頼などを承ります。">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <meta name="description" content="株式会社AINHITへのお問い合わせページです。リネン運用、洗浄、集配、数量管理に関するご相談は電話またはメールでお問い合わせください。">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="お問い合わせ | 株式会社AINHIT">
+    <meta property="og:description" content="リネンを、現場で止めない。リネン運用のご相談は電話またはメールでお問い合わせください。">
+    <meta property="og:url" content="https://ainhit.co.jp/contact.html">
+    <meta property="og:image" content="https://ainhit.co.jp/assets/logo.png">
+    <meta property="og:site_name" content="株式会社AINHIT">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://ainhit.co.jp/contact.html">
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link rel="apple-touch-icon" href="assets/logo.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#005bac">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#eef7ff',
-                            100: '#d9eeff',
-                            200: '#bce0ff',
-                            300: '#8ecbff',
-                            400: '#59adff',
-                            500: '#318fff',
-                            600: '#176fff',
-                            700: '#005bac',
-                            800: '#0a4c8f',
-                            900: '#0f4175',
-                        },
-                        navy: {
-                            900: '#0a192f',
-                            950: '#0f172a',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Noto Sans JP', 'Inter', 'sans-serif'],
-                        heading: ['Outfit', 'Noto Sans JP', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'premium': '0 25px 50px -12px rgba(0, 91, 172, 0.15)',
-                        'premium-hover': '0 30px 60px -10px rgba(0, 91, 172, 0.25)',
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- AOS Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom Styles -->
+    <meta name="theme-color" content="#2f3437">
     <style>
-        .header-solid {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-            border-bottom: 1px solid #1e293b;
+        :root {
+            --ink: #222525;
+            --charcoal: #303536;
+            --graphite: #4f5657;
+            --muted: #757c7c;
+            --line: #d9d6cc;
+            --paper: #f7f3e9;
+            --paper-2: #eeeadf;
+            --white: #ffffff;
+            --mist: #f4f5f2;
+            --accent: #8a806f;
+            --radius: 8px;
+            --shadow: 0 24px 70px rgba(34, 37, 37, .10);
         }
-        .form-input {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            color: var(--ink);
+            background: var(--paper);
+            line-height: 1.75;
         }
-        .form-input:focus {
-            outline: none;
-            border-color: #005bac;
-            box-shadow: inset 0 0 0 1.5px #005bac, 0 0 25px rgba(0, 91, 172, 0.15);
-            background: #ffffff;
+        a { color: inherit; text-decoration: none; }
+        .container { width: min(1040px, calc(100% - 40px)); margin: 0 auto; }
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(247, 243, 233, .92);
+            border-bottom: 1px solid rgba(48, 53, 54, .12);
+            backdrop-filter: blur(14px);
         }
-        @keyframes ripple {
-            0% { box-shadow: 0 0 0 0 rgba(0, 91, 172, 0.2), 0 0 0 6px rgba(0, 91, 172, 0.15), 0 0 0 15px rgba(0, 91, 172, 0.08); }
-            100% { box-shadow: 0 0 0 6px rgba(0, 91, 172, 0.15), 0 0 0 15px rgba(0, 91, 172, 0.08), 0 0 0 35px rgba(0, 91, 172, 0); }
+        .header-inner {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
         }
-        .pulse-btn:hover {
-            animation: ripple 1.5s infinite;
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
         }
-        .hairline-grid {
-            background-image: linear-gradient(rgba(0, 91, 172, 0.02) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(0, 91, 172, 0.02) 1px, transparent 1px);
-            background-size: 12px 12px;
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            background: var(--charcoal);
+            color: var(--paper);
+            font-size: 13px;
+            font-weight: 800;
+        }
+        .brand-name { display: grid; }
+        .brand-name strong { font-size: 16px; }
+        .brand-name span { font-size: 11px; color: var(--muted); font-weight: 700; }
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--graphite);
+        }
+        .nav a:hover { color: var(--ink); }
+        main {
+            background:
+                linear-gradient(90deg, rgba(48, 53, 54, .05) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(48, 53, 54, .05) 1px, transparent 1px),
+                var(--paper);
+            background-size: 44px 44px;
+        }
+        .hero { padding: 86px 0 50px; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--graphite);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: var(--accent);
+        }
+        h1, h2, h3, p { margin-top: 0; }
+        h1 {
+            margin: 22px 0 18px;
+            font-size: clamp(38px, 6vw, 72px);
+            line-height: 1.12;
+            font-weight: 900;
+        }
+        .lead {
+            max-width: 740px;
+            color: var(--graphite);
+            font-size: 17px;
+            line-height: 2;
+            margin-bottom: 0;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, .85fr) minmax(320px, .55fr);
+            gap: 24px;
+            padding: 30px 0 86px;
+        }
+        .card {
+            background: rgba(255, 255, 255, .72);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+        }
+        .card h2 {
+            font-size: 26px;
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+        .card p { color: var(--graphite); }
+        .contact-methods {
+            display: grid;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .method {
+            display: block;
+            border: 1px solid var(--line);
+            background: var(--white);
+            padding: 18px;
+        }
+        .method span {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: .06em;
+            margin-bottom: 4px;
+        }
+        .method strong {
+            display: block;
+            font-size: clamp(18px, 3vw, 25px);
+            line-height: 1.35;
+            overflow-wrap: anywhere;
+        }
+        .note {
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--mist);
+            border: 1px solid var(--line);
+            color: var(--graphite);
+            font-size: 14px;
+        }
+        .checklist {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .checklist li {
+            display: grid;
+            grid-template-columns: 24px 1fr;
+            gap: 10px;
+            color: var(--graphite);
+            font-size: 14px;
+        }
+        .checklist li::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            margin-top: 9px;
+            background: var(--charcoal);
+        }
+        .company-table {
+            margin-top: 20px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .72);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .company-table dl { margin: 0; }
+        .company-table div {
+            display: grid;
+            grid-template-columns: 102px 1fr;
+            border-bottom: 1px solid var(--line);
+        }
+        .company-table div:last-child { border-bottom: 0; }
+        .company-table dt, .company-table dd {
+            margin: 0;
+            padding: 14px;
+            font-size: 14px;
+        }
+        .company-table dt {
+            color: var(--muted);
+            font-weight: 900;
+            background: rgba(238, 234, 223, .65);
+        }
+        .company-table dd { font-weight: 700; }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            min-height: 48px;
+            padding: 12px 18px;
+            border: 1px solid var(--charcoal);
+            background: var(--charcoal);
+            color: var(--paper);
+            font-weight: 900;
+            margin-top: 24px;
+        }
+        .site-footer {
+            padding: 34px 0;
+            background: #171919;
+            color: rgba(247, 243, 233, .68);
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            font-size: 13px;
+        }
+        .footer-inner strong { color: var(--paper); }
+        @media (max-width: 820px) {
+            .nav { display: none; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-inner { align-items: flex-start; flex-direction: column; }
+        }
+        @media (max-width: 560px) {
+            .container { width: min(100% - 28px, 1040px); }
+            .hero { padding-top: 58px; }
+            h1 { font-size: 38px; }
+            .lead { font-size: 15px; line-height: 1.85; }
+            .card { padding: 22px; }
+            .company-table div { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body class="font-sans text-slate-200 bg-navy-900 selection:bg-primary-900 selection:text-white">
-
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 header-solid">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-4 group">
-                <div class="relative">
-                    <!-- Standalone clean transparent logo. Removed dark container box -->
-                    <img src="assets/logo.png" alt="AINHIT Logo" class="h-12 w-12 object-contain group-hover:scale-105 transition-transform duration-300">
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-heading text-lg font-bold tracking-tight text-white leading-tight">株式会社AINHIT</span>
-                    <span class="text-[9px] text-slate-400 font-extrabold tracking-[0.25em] uppercase font-heading">AINHIT Linen Supply</span>
-                </div>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="株式会社AINHIT トップ">
+                <span class="brand-mark">A</span>
+                <span class="brand-name">
+                    <strong>株式会社AINHIT</strong>
+                    <span>LINEN OPERATION PARTNER</span>
+                </span>
             </a>
-            
-            <!-- Mobile Menu Toggle -->
-            <button id="menu-btn" class="lg:hidden p-2.5 text-slate-300 hover:bg-slate-800 rounded-xl transition-all">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-
-            <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-8">
-                <a href="index.html#about" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">強み・提供価値</a>
-                <a href="index.html#services" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">事業領域</a>
-                <a href="index.html#company" class="text-sm font-bold text-slate-300 hover:text-primary-400 transition-colors">会社情報</a>
-                <a href="contact.html" class="pulse-btn px-6 py-3 bg-gradient-to-r from-primary-700 to-primary-800 text-white text-sm font-bold rounded-full hover:from-primary-800 hover:to-primary-900 shadow-md shadow-primary-900/50 transition-all hover:scale-[1.03]">
-                    お問い合わせ
-                </a>
-            </nav>
-        </div>
-        
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-navy-950 border-t border-slate-800 p-6 shadow-2xl rounded-b-[2rem]">
-            <nav class="flex flex-col gap-4">
-                <a href="index.html#about" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">強み・提供価値</a>
-                <a href="index.html#services" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">事業領域</a>
-                <a href="index.html#company" class="text-lg font-bold text-slate-300 hover:text-primary-400 transition-colors">会社情報</a>
-                <a href="contact.html" class="mt-4 text-center py-4 bg-gradient-to-r from-primary-700 to-primary-800 text-white font-bold rounded-2xl shadow-lg">お問い合わせ</a>
+            <nav class="nav" aria-label="主要ナビゲーション">
+                <a href="index.html#operation">運用設計</a>
+                <a href="index.html#strengths">強み</a>
+                <a href="index.html#flow">導入の流れ</a>
+                <a href="index.html#faq">FAQ</a>
             </nav>
         </div>
     </header>
 
-    <main class="pt-36 pb-24 bg-navy-900 min-h-screen relative overflow-hidden">
-        <!-- Decoration background glow -->
-        <div class="absolute top-20 right-0 w-[400px] h-[400px] bg-primary-800/10 rounded-full blur-[100px] opacity-30 pointer-events-none"></div>
-        <div class="absolute bottom-20 left-0 w-[400px] h-[400px] bg-primary-900/15 rounded-full blur-[100px] opacity-25 pointer-events-none"></div>
-
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-3xl mx-auto">
-                <!-- Section Header -->
-                <div class="text-center mb-16" data-aos="fade-up">
-                    <span class="text-primary-400 font-bold tracking-widest uppercase text-xs mb-3 block">CONTACT WINDOW</span>
-                    <h1 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6">お問い合わせ</h1>
-                    <p class="text-slate-300 text-sm md:text-base leading-relaxed">
-                        高度衛生リネンサプライのご相談、RFID個別アセット管理のお見積りなど、<br class="hidden md:block">
-                        必要事項をご記入の上、お気軽にお問い合わせください。
-                    </p>
-                </div>
-
-                <!-- Contact Form Container: White-to-Slate light luxury gradient contrasting against dark background -->
-                <div class="bg-gradient-to-b from-white to-slate-50/95 rounded-[2.5rem] shadow-premium hover:shadow-premium-hover transition-shadow duration-500 p-8 md:p-12 border border-slate-200/50 hairline-grid text-slate-900" data-aos="fade-up" data-aos-delay="100">
-                    <form action="#" method="POST" id="contact-form">
-                        <div class="grid gap-8">
-                            <!-- Company Name -->
-                            <div>
-                                <label for="company-name" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">貴社名 <span class="text-slate-400 font-normal">（任意）</span></label>
-                                <input type="text" id="company-name" name="company" placeholder="例：株式会社AINHIT" 
-                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
-                            </div>
-
-                            <!-- Name -->
-                            <div>
-                                <label for="full-name" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">お名前 <span class="text-red-500">*</span></label>
-                                <input type="text" id="full-name" name="name" required placeholder="例：山﨑 祐之" 
-                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
-                            </div>
-
-                            <!-- Email -->
-                            <div>
-                                <label for="email" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">メールアドレス <span class="text-red-500">*</span></label>
-                                <input type="email" id="email" name="email" required placeholder="例：y_yamazaki@ainhit.co.jp" 
-                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
-                            </div>
-
-                            <!-- Phone -->
-                            <div>
-                                <label for="phone" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">電話番号 <span class="text-red-500">*</span></label>
-                                <input type="tel" id="phone" name="phone" required placeholder="例：048-287-3645" 
-                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input text-sm">
-                            </div>
-
-                            <!-- Content -->
-                            <div>
-                                <label for="message" class="block text-xs font-bold text-slate-700 tracking-wider mb-2.5 uppercase">お問い合わせ内容 <span class="text-red-500">*</span></label>
-                                <textarea id="message" name="message" required rows="6" placeholder="ご検討中のサービス種別（ホテル用、病院用、ユニフォーム等）、規模、ご要望などを具体的にご記入ください。" 
-                                    class="w-full px-6 py-4 bg-slate-100/50 border border-slate-200 rounded-2xl text-slate-900 placeholder:text-slate-400 transition-all form-input resize-none text-sm leading-relaxed"></textarea>
-                            </div>
-
-                            <!-- Premium Submit Button -->
-                            <div class="pt-4">
-                                <button type="submit" class="w-full py-5 bg-gradient-to-r from-primary-700 to-primary-800 text-white font-bold rounded-2xl hover:from-primary-800 hover:to-primary-900 transition-all duration-300 shadow-lg shadow-primary-200 flex items-center justify-center gap-3 group relative overflow-hidden active:scale-[0.98]">
-                                    <span class="relative z-10 transition-transform duration-300 group-hover:translate-x-[-3px]">送信内容を確認する</span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative z-10 group-hover:translate-x-2 transition-transform duration-300 ease-out" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                    <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300 pointer-events-none"></div>
-                                </button>
-                                <p class="mt-6 text-center text-xs text-slate-500 leading-relaxed">
-                                    ※現在お問い合わせフォームシステムは調整中のため、送信機能は準備段階となっております。<br>
-                                    お急ぎの方は、お電話（<strong>048-287-3645</strong>）または携帯（<strong>080-7593-5797</strong>）へ直接ご連絡をお願いいたします。
-                                </p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Policy Clause -->
-                <p class="mt-12 text-center text-[11px] text-slate-400 leading-relaxed">
-                    ご入力いただいた個人情報および企業情報は、お問い合わせへの回答ならびに最適なサービスご提案の目的にのみ安全に利用いたします。第三者への開示・提供は一切行いません。
-                </p>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <span class="eyebrow">contact</span>
+                <h1>リネン運用のご相談</h1>
+                <p class="lead">送信フォームは現在準備中です。リネンの洗浄、集配、数量管理、導入相談については、電話またはメールでお問い合わせください。</p>
             </div>
-        </div>
+        </section>
+
+        <section class="contact-grid container">
+            <article class="card">
+                <h2>お問い合わせ先</h2>
+                <p>お急ぎの場合は電話でご連絡ください。メールの場合は、施設種別・所在地・相談内容を添えていただくと確認がスムーズです。</p>
+                <div class="contact-methods">
+                    <a class="method" href="tel:048-287-3645">
+                        <span>TEL</span>
+                        <strong>048-287-3645</strong>
+                    </a>
+                    <a class="method" href="mailto:y_yamazaki@ainhit.co.jp">
+                        <span>MAIL</span>
+                        <strong>y_yamazaki@ainhit.co.jp</strong>
+                    </a>
+                    <div class="method">
+                        <span>FAX</span>
+                        <strong>048-287-3646</strong>
+                    </div>
+                </div>
+                <div class="note">このページには送信フォームを設置していません。フォーム送信完了のように見える挙動はありません。</div>
+                <a class="back-link" href="index.html">トップページへ戻る</a>
+            </article>
+
+            <aside class="card">
+                <h2>ご相談時にあるとよい情報</h2>
+                <ul class="checklist">
+                    <li>施設種別（宿泊施設、医療・介護施設、飲食店、法人など）</li>
+                    <li>所在地と集配を希望するエリア</li>
+                    <li>相談したい品目（シーツ、タオル、ユニフォームなど）</li>
+                    <li>数量の目安、現在の交換頻度</li>
+                    <li>困っていること（不足、保管、品質、回収など）</li>
+                </ul>
+                <div class="company-table" aria-label="会社情報">
+                    <dl>
+                        <div><dt>会社名</dt><dd>株式会社AINHIT</dd></div>
+                        <div><dt>代表</dt><dd>山﨑 祐之</dd></div>
+                        <div><dt>所在地</dt><dd>〒335-0021<br>埼玉県戸田市新曽2463-10<br>チェリーブラッサム203</dd></div>
+                    </dl>
+                </div>
+            </aside>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-navy-950 py-14 border-t border-slate-900">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-3">
-                <!-- Standalone clean transparent logo. Removed dark box container -->
-                <img src="assets/logo.png" alt="AINHIT Logo" class="h-10 w-10 object-contain">
-                <span class="font-heading text-lg font-bold text-white">株式会社AINHIT</span>
-            </div>
-            
-            <nav class="flex gap-8 text-sm font-bold text-slate-400">
-                <a href="index.html#about" class="hover:text-primary-400 transition-colors">強み・提供価値</a>
-                <a href="index.html#services" class="hover:text-primary-400 transition-colors">事業領域</a>
-                <a href="index.html#company" class="hover:text-primary-400 transition-colors">会社情報</a>
-            </nav>
-            
-            <p class="text-slate-400 text-sm font-medium">
-                &copy; 2026 Ainhit Corporation. All Rights Reserved.
-            </p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div><strong>株式会社AINHIT</strong> / Linen Operation Partner</div>
+            <div>&copy; 2026 AINHIT Corporation. All Rights Reserved.</div>
         </div>
     </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            once: true,
-            duration: 850,
-            offset: 100
-        });
-
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // Form Submission (Dummy Override)
-        const form = document.getElementById('contact-form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('お問い合わせフォームはシステム調整中のため、お電話（048-287-3645）または携帯（080-7593-5797）にて代表：山﨑まで直接お問い合わせください。');
-        });
-    </script>
 </body>
 </html>
