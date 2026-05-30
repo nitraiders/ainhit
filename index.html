@@ -10,7 +10,7 @@
     <meta property="og:title" content="株式会社アインハイト | リネンを、現場で止めない。">
     <meta property="og:description" content="清潔を整え、運用を支える。洗浄から集配まで、リネン運用を一体で。">
     <meta property="og:url" content="https://ainhit.pages.dev/">
-    <meta property="og:image" content="https://ainhit.pages.dev/assets/logo.png">
+    <meta property="og:image" content="https://ainhit.pages.dev/assets/ogp-logo.png">
     <meta property="og:site_name" content="株式会社アインハイト">
     <meta name="twitter:card" content="summary">
     <link rel="canonical" href="https://ainhit.pages.dev/">
@@ -509,6 +509,24 @@
         }
         .message p { color: var(--graphite); }
         .signature { margin-top: 26px; font-weight: 900; }
+        .company-side {
+            display: grid;
+            gap: 16px;
+            align-content: start;
+        }
+        .company-emblem {
+            display: grid;
+            place-items: center;
+            padding: 26px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--white);
+        }
+        .company-emblem img {
+            width: min(100%, 260px);
+            height: auto;
+            object-fit: contain;
+        }
         .company-table {
             border: 1px solid var(--line);
             background: rgba(255, 255, 255, .68);
@@ -606,11 +624,11 @@
         .footer-brand {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
         .footer-brand img {
-            width: 38px;
-            height: 38px;
+            width: 148px;
+            height: auto;
             object-fit: contain;
         }
         .footer-inner strong { color: var(--paper); }
@@ -666,6 +684,7 @@
             .contact-list { min-width: 0; }
             .contact-list a:first-child { font-size: 18px; text-align: center; }
             .footer-inner { align-items: flex-start; flex-direction: column; }
+            .footer-brand img { width: 136px; }
         }
     </style>
 </head>
@@ -996,15 +1015,20 @@
                     <p>まずは現在の困りごとからお聞かせください。施設ごとの事情に合わせ、無理のないリネン運用を一緒に整えていきます。</p>
                     <div class="signature">代表取締役社長　山﨑 祐之</div>
                 </article>
-                <aside class="company-table" aria-label="会社情報">
-                    <dl>
-                        <div><dt>会社名</dt><dd>株式会社アインハイト</dd></div>
-                        <div><dt>所在地</dt><dd>〒335-0021<br>埼玉県戸田市新曽2463-10<br>チェリーブラッサム203</dd></div>
-                        <div><dt>代表</dt><dd>山﨑 祐之</dd></div>
-                        <div><dt>TEL</dt><dd><a href="tel:048-287-3645">048-287-3645</a></dd></div>
-                        <div><dt>FAX</dt><dd>048-287-3646</dd></div>
-                        <div><dt>MAIL</dt><dd><a href="mailto:y_yamazaki@ainhit.co.jp">y_yamazaki@ainhit.co.jp</a></dd></div>
-                    </dl>
+                <aside class="company-side" aria-label="会社情報">
+                    <div class="company-emblem">
+                        <img src="assets/logo-emblem.png" alt="株式会社アインハイト エンブレム">
+                    </div>
+                    <div class="company-table">
+                        <dl>
+                            <div><dt>会社名</dt><dd>株式会社アインハイト</dd></div>
+                            <div><dt>所在地</dt><dd>〒335-0021<br>埼玉県戸田市新曽2463-10<br>チェリーブラッサム203</dd></div>
+                            <div><dt>代表</dt><dd>山﨑 祐之</dd></div>
+                            <div><dt>TEL</dt><dd><a href="tel:048-287-3645">048-287-3645</a></dd></div>
+                            <div><dt>FAX</dt><dd>048-287-3646</dd></div>
+                            <div><dt>MAIL</dt><dd><a href="mailto:y_yamazaki@ainhit.co.jp">y_yamazaki@ainhit.co.jp</a></dd></div>
+                        </dl>
+                    </div>
                 </aside>
             </div>
         </section>
@@ -1092,7 +1116,7 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand">
-                <img src="assets/logo-mark-white.png" alt="株式会社アインハイト ロゴ">
+                <img src="assets/logo-emblem-white.png" alt="株式会社アインハイト エンブレム">
                 <div><strong>株式会社アインハイト</strong> / Linen Operation Partner</div>
             </div>
             <div>&copy; 2026 株式会社アインハイト. All Rights Reserved.</div>
