@@ -69,17 +69,14 @@
             gap: 12px;
             min-width: max-content;
         }
-        .brand-mark {
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            border: 1px solid rgba(255, 255, 255, .16);
-            background: var(--charcoal);
-            color: var(--paper);
-            font-size: 13px;
-            font-weight: 800;
-            line-height: 1;
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+        .site-header .brand-logo {
+            filter: invert(1) brightness(.28);
         }
         .brand-name { display: grid; gap: 0; }
         .brand-name strong { font-size: 16px; letter-spacing: .02em; }
@@ -253,6 +250,42 @@
             font-size: 12px;
             font-weight: 800;
         }
+        .linen-visual {
+            margin-top: 24px;
+            padding: 18px;
+            background: rgba(247, 243, 233, .08);
+            border: 1px solid rgba(247, 243, 233, .16);
+            border-radius: var(--radius);
+        }
+        .linen-stack {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .linen-stack span {
+            height: 20px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #ffffff, #ece8dd);
+            box-shadow: inset 0 -1px 0 rgba(48, 53, 54, .14);
+        }
+        .linen-stack span:nth-child(2) { width: 92%; }
+        .linen-stack span:nth-child(3) { width: 84%; }
+        .ops-mini {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .ops-mini div {
+            min-height: 58px;
+            padding: 10px;
+            background: rgba(247, 243, 233, .08);
+            border: 1px solid rgba(247, 243, 233, .14);
+            display: grid;
+            align-content: center;
+            gap: 2px;
+        }
+        .ops-mini strong { font-size: 12px; line-height: 1.3; }
+        .ops-mini span { color: rgba(247, 243, 233, .62); font-size: 10px; font-weight: 800; }
         section { padding: 86px 0; }
         .section-head {
             display: grid;
@@ -278,7 +311,7 @@
         .band-dark .card p,
         .band-dark .flow-card p { color: rgba(247, 243, 233, .68); }
         .band-light { background: var(--mist); }
-        .issue-grid, .strength-grid, .service-grid, .faq-grid {
+        .issue-grid, .strength-grid, .service-grid, .faq-grid, .item-grid, .worry-grid, .future-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 16px;
@@ -307,6 +340,96 @@
             margin-bottom: 12px;
         }
         .card p { color: var(--graphite); font-size: 14px; margin-bottom: 0; }
+        .item-grid {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+        .item-card {
+            min-height: 112px;
+            padding: 18px 14px;
+            border: 1px solid var(--line);
+            background: var(--white);
+            border-radius: var(--radius);
+            display: grid;
+            align-content: center;
+            gap: 8px;
+        }
+        .item-card::before {
+            content: "";
+            width: 38px;
+            height: 8px;
+            background: linear-gradient(90deg, var(--charcoal), var(--accent));
+            opacity: .78;
+        }
+        .item-card strong {
+            font-size: 15px;
+            line-height: 1.35;
+        }
+        .worry-panel {
+            display: grid;
+            grid-template-columns: minmax(0, .9fr) minmax(300px, .55fr);
+            gap: 18px;
+            align-items: stretch;
+        }
+        .worry-list {
+            display: grid;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .worry-list li {
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, .68);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            font-weight: 800;
+        }
+        .sales-note {
+            padding: 28px;
+            background: var(--charcoal);
+            color: var(--paper);
+            border-radius: var(--radius);
+        }
+        .sales-note h3 { font-size: 22px; line-height: 1.45; margin-bottom: 12px; }
+        .sales-note p { color: rgba(247, 243, 233, .7); font-size: 14px; margin: 0; }
+        .area-box {
+            display: grid;
+            grid-template-columns: minmax(0, .7fr) minmax(320px, .55fr);
+            gap: 18px;
+            align-items: stretch;
+        }
+        .area-main {
+            padding: 30px;
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+        }
+        .area-main h3 { font-size: 24px; margin-bottom: 12px; }
+        .area-main p { color: var(--graphite); margin-bottom: 0; }
+        .area-check {
+            padding: 24px;
+            background: rgba(255, 255, 255, .68);
+            border: 1px dashed var(--accent);
+            border-radius: var(--radius);
+        }
+        .area-check strong { display: block; font-size: 18px; margin-bottom: 10px; }
+        .area-check p { color: var(--graphite); font-size: 14px; margin: 0; }
+        .future-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .future-card {
+            padding: 20px;
+            border: 1px dashed var(--line);
+            background: rgba(255, 255, 255, .45);
+            border-radius: var(--radius);
+        }
+        .future-card span {
+            display: block;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        .future-card strong { display: block; line-height: 1.45; margin-bottom: 8px; }
+        .future-card p { color: var(--graphite); font-size: 13px; margin: 0; }
         .design-map {
             display: grid;
             grid-template-columns: 1fr;
@@ -450,10 +573,16 @@
         }
         .contact-list a, .contact-list div {
             display: block;
-            padding: 15px 18px;
+            padding: 18px 20px;
             border: 1px solid rgba(247, 243, 233, .2);
             background: rgba(247, 243, 233, .06);
             font-weight: 900;
+        }
+        .contact-list a:first-child {
+            background: var(--paper);
+            color: var(--ink);
+            border-color: var(--paper);
+            font-size: 20px;
         }
         .contact-list span {
             display: block;
@@ -476,6 +605,16 @@
             align-items: center;
             gap: 20px;
             font-size: 13px;
+        }
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
         }
         .footer-inner strong { color: var(--paper); }
         .mobile-menu-button { display: none; }
@@ -502,7 +641,8 @@
                 box-shadow: var(--shadow);
             }
             .hero-grid, .section-head, .company-layout, .cta-box { grid-template-columns: 1fr; }
-            .issue-grid, .strength-grid, .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .issue-grid, .strength-grid, .service-grid, .item-grid, .future-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .worry-panel, .area-box { grid-template-columns: 1fr; }
             .flow { grid-template-columns: 1fr; }
             .flow-card { border-right: 0; border-bottom: 1px solid var(--line); min-height: 0; }
             .flow-card:last-child { border-bottom: 0; }
@@ -517,7 +657,7 @@
             .cta-actions .button { width: 100%; }
             .ops-panel { padding: 20px; }
             section { padding: 64px 0; }
-            .hero-note, .issue-grid, .strength-grid, .service-grid, .faq-grid, .status-strip { grid-template-columns: 1fr; }
+            .hero-note, .issue-grid, .strength-grid, .service-grid, .faq-grid, .status-strip, .item-grid, .future-grid, .ops-mini { grid-template-columns: 1fr; }
             .hero-note div { border-right: 0; border-bottom: 1px solid var(--line); }
             .hero-note div:last-child { border-bottom: 0; }
             .map-row { grid-template-columns: 1fr; }
@@ -526,6 +666,7 @@
             .map-line span:last-child { border-bottom: 0; }
             .company-table div { grid-template-columns: 1fr; }
             .contact-list { min-width: 0; }
+            .contact-list a:first-child { font-size: 18px; text-align: center; }
             .footer-inner { align-items: flex-start; flex-direction: column; }
         }
     </style>
@@ -534,7 +675,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="#top" aria-label="株式会社AINHIT トップ">
-                <span class="brand-mark">A</span>
+                <img class="brand-logo" src="assets/logo.png" alt="株式会社AINHIT ロゴ">
                 <span class="brand-name">
                     <strong>株式会社AINHIT</strong>
                     <span>LINEN OPERATION PARTNER</span>
@@ -543,6 +684,7 @@
             <button class="mobile-menu-button" type="button" id="menu-button" aria-controls="site-nav" aria-expanded="false">MENU</button>
             <nav class="nav" id="site-nav">
                 <a href="#issues">現場課題</a>
+                <a href="#items">対応品目</a>
                 <a href="#operation">運用設計</a>
                 <a href="#strengths">強み</a>
                 <a href="#flow">導入の流れ</a>
@@ -600,6 +742,18 @@
                         <div>数量</div>
                         <div>納期</div>
                     </div>
+                    <div class="linen-visual" aria-label="リネン運用の視覚表現">
+                        <div class="linen-stack" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="ops-mini">
+                            <div><span>STOCK</span><strong>在庫確認</strong></div>
+                            <div><span>ROUTE</span><strong>集配計画</strong></div>
+                            <div><span>CHECK</span><strong>数量照合</strong></div>
+                        </div>
+                    </div>
                 </aside>
             </div>
         </section>
@@ -634,6 +788,30 @@
                         <h3>管理が属人化する</h3>
                         <p>担当者の経験だけに頼ると、引き継ぎや改善が難しくなります。</p>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="worries">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">sales support</span>
+                        <h2>こんなお悩みありませんか？</h2>
+                    </div>
+                    <p>リネンの問題は、現場で起きてから気づくことが多い業務です。AINHITは、日々の運用に出る小さな負担から相談できます。</p>
+                </div>
+                <div class="worry-panel">
+                    <ul class="worry-list">
+                        <li>在庫が足りず、急な稼働増に対応しづらい</li>
+                        <li>回収数と納品数が合わず、確認に時間がかかる</li>
+                        <li>担当者依存になっていて、引き継ぎが不安</li>
+                        <li>保管場所や棚卸の管理負担が大きい</li>
+                    </ul>
+                    <aside class="sales-note">
+                        <h3>まずは現状の運用を崩さず、困りごとを整理します。</h3>
+                        <p>品目、数量、交換頻度、集配条件を確認し、施設に合わせて無理のない運用方法を検討します。</p>
+                    </aside>
                 </div>
             </div>
         </section>
@@ -730,6 +908,48 @@
             </div>
         </section>
 
+        <section id="items">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">linen items</span>
+                        <h2>対応品目</h2>
+                    </div>
+                    <p>宿泊施設、医療・介護施設、飲食・法人現場で日常的に使うリネンや業務用テキスタイルについて相談できます。</p>
+                </div>
+                <div class="item-grid">
+                    <div class="item-card"><strong>シーツ</strong></div>
+                    <div class="item-card"><strong>枕カバー</strong></div>
+                    <div class="item-card"><strong>バスタオル</strong></div>
+                    <div class="item-card"><strong>フェイスタオル</strong></div>
+                    <div class="item-card"><strong>ガウン</strong></div>
+                    <div class="item-card"><strong>ユニフォーム</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="area" class="band-light">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">service area</span>
+                        <h2>対応エリア</h2>
+                    </div>
+                    <p>集配条件は品目、数量、頻度、所在地によって変わります。現時点で確定情報がない範囲は、断定せず確認前提でご案内します。</p>
+                </div>
+                <div class="area-box">
+                    <article class="area-main">
+                        <h3>埼玉県を中心にご相談を受け付けています。</h3>
+                        <p>戸田市周辺からの集配可否、頻度、最小数量は施設条件により確認が必要です。まずは所在地と希望品目をお知らせください。</p>
+                    </article>
+                    <aside class="area-check">
+                        <strong>対応可否: 要確認</strong>
+                        <p>対応可能エリア、曜日、時間帯、緊急時対応の可否は、クライアント確認後に正式情報として反映します。</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
         <section id="flow">
             <div class="container">
                 <div class="section-head">
@@ -791,6 +1011,40 @@
             </div>
         </section>
 
+        <section id="proof">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">future proof</span>
+                        <h2>信頼情報の追加予定枠</h2>
+                    </div>
+                    <p>実データが確認でき次第、営業資料として使える情報を追加します。現時点では数値や事例をダミー表示しません。</p>
+                </div>
+                <div class="future-grid">
+                    <article class="future-card">
+                        <span>TO BE ADDED</span>
+                        <strong>実績紹介</strong>
+                        <p>施設種別や対応品目を確認後に掲載。</p>
+                    </article>
+                    <article class="future-card">
+                        <span>TO BE ADDED</span>
+                        <strong>導入事例</strong>
+                        <p>掲載許可のある案件のみ追加。</p>
+                    </article>
+                    <article class="future-card">
+                        <span>TO BE ADDED</span>
+                        <strong>対応件数</strong>
+                        <p>根拠となる件数確認後に反映。</p>
+                    </article>
+                    <article class="future-card">
+                        <span>TO BE ADDED</span>
+                        <strong>取引フロー図</strong>
+                        <p>契約から定期運用までの詳細確認後に作成。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section id="faq">
             <div class="container">
                 <div class="section-head">
@@ -839,7 +1093,10 @@
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <div><strong>株式会社AINHIT</strong> / Linen Operation Partner</div>
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="株式会社AINHIT ロゴ">
+                <div><strong>株式会社AINHIT</strong> / Linen Operation Partner</div>
+            </div>
             <div>&copy; 2026 AINHIT Corporation. All Rights Reserved.</div>
         </div>
     </footer>

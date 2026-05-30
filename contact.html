@@ -64,15 +64,14 @@
             align-items: center;
             gap: 12px;
         }
-        .brand-mark {
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            background: var(--charcoal);
-            color: var(--paper);
-            font-size: 13px;
-            font-weight: 800;
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            flex: 0 0 auto;
+        }
+        .site-header .brand-logo {
+            filter: invert(1) brightness(.28);
         }
         .brand-name { display: grid; }
         .brand-name strong { font-size: 16px; }
@@ -154,6 +153,12 @@
             background: var(--white);
             padding: 18px;
         }
+        .method:first-child {
+            background: var(--charcoal);
+            color: var(--paper);
+            border-color: var(--charcoal);
+        }
+        .method:first-child span { color: rgba(247, 243, 233, .72); }
         .method span {
             display: block;
             color: var(--muted);
@@ -246,6 +251,16 @@
             font-size: 13px;
         }
         .footer-inner strong { color: var(--paper); }
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-brand img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
         @media (max-width: 820px) {
             .nav { display: none; }
             .contact-grid { grid-template-columns: 1fr; }
@@ -257,6 +272,7 @@
             h1 { font-size: 38px; }
             .lead { font-size: 15px; line-height: 1.85; }
             .card { padding: 22px; }
+            .method:first-child { text-align: center; }
             .company-table div { grid-template-columns: 1fr; }
         }
     </style>
@@ -265,7 +281,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html" aria-label="株式会社AINHIT トップ">
-                <span class="brand-mark">A</span>
+                <img class="brand-logo" src="assets/logo.png" alt="株式会社AINHIT ロゴ">
                 <span class="brand-name">
                     <strong>株式会社AINHIT</strong>
                     <span>LINEN OPERATION PARTNER</span>
@@ -333,7 +349,10 @@
 
     <footer class="site-footer">
         <div class="container footer-inner">
-            <div><strong>株式会社AINHIT</strong> / Linen Operation Partner</div>
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="株式会社AINHIT ロゴ">
+                <div><strong>株式会社AINHIT</strong> / Linen Operation Partner</div>
+            </div>
             <div>&copy; 2026 AINHIT Corporation. All Rights Reserved.</div>
         </div>
     </footer>
